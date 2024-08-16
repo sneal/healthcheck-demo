@@ -1,0 +1,18 @@
+applications:
+  - name: healthcheck-demo
+    memory: 1G
+    instances: 1
+    path: build/libs/healthcheck-demo-0.0.1-SNAPSHOT.jar
+    buildpacks:
+      - java_buildpack_offline
+    log-rate-limit-per-second: 2800b
+    health-check-http-endpoint: /actuator/health/liveness
+    health-check-type: http
+    health-check-invocation-timeout: 2
+    health-check-interval: 15
+    readiness-health-check-http-endpoint: /actuator/health/readiness
+    readiness-health-check-type: http
+    readiness-health-check-interval: 60
+    readiness-health-check-invocation-timeout: 5
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+ } }'
