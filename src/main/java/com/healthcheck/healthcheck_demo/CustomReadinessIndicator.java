@@ -93,7 +93,7 @@ public class CustomReadinessIndicator extends ReadinessStateHealthIndicator {
     private boolean checkExternalAPI() {
         System.out.println("Checking external API...");
         try {
-            restTemplate.getForEntity("https://api.github.com", String.class);
+            restTemplate.getForEntity("https://broadcom.com", String.class);
         }
         catch (RestClientException e) {
             System.out.println("External API check to api.github.com failed: " + e.getMessage());
